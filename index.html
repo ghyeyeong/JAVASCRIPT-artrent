@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ArtiRent | 그림 렌탈 서비스</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-inner">
+
+            <a href="./index.html" class="logo">
+                Arti<span>Rent</span>
+            </a>
+
+            <nav class="gnb">
+                <a href="#artworkSection">작품 찾기</a>
+                <a href="#service">렌탈 안내</a>
+                <a href="#footer">고객센터</a>
+            </nav>
+
+            <button type="button" class="login-btn">
+                로그인
+            </button>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- 메인 비주얼 -->
+        <section class="hero">
+            <div class="hero-content">
+
+                <p class="hero-label">
+                    ART RENTAL SERVICE
+                </p>
+
+                <h1>
+                    당신의 공간에<br>
+                    예술을 렌탈하세요
+                </h1>
+
+                <p class="hero-description">
+                    취향과 공간에 어울리는 작품을 찾아보세요.<br>
+                    부담 없는 월 렌탈료로 새로운 분위기를 만들 수 있습니다.
+                </p>
+
+                <!-- 검색 -->
+                <form class="search-box" id="searchForm">
+
+                    <label for="searchInput" class="blind">
+                        작품 검색
+                    </label>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="작품명 또는 작가명을 검색하세요"
+                    >
+
+                    <button type="submit">
+                        검색
+                    </button>
+
+                </form>
+
+            </div>
+        </section>
+
+        <!-- 작품 영역 -->
+        <section class="artwork-section" id="artworkSection">
+
+            <div class="section-inner">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="section-label">
+                            ART COLLECTION
+                        </p>
+
+                        <h2>
+                            취향에 맞는 작품을 찾아보세요
+                        </h2>
+                    </div>
+
+                    <p class="section-description">
+                        카테고리를 선택하거나 검색과 정렬 기능을 이용해보세요.
+                    </p>
+
+                </div>
+
+                <!-- 카테고리 -->
+                <div class="category-list" id="categoryList">
+
+                    <button
+                        type="button"
+                        class="category-btn active"
+                        data-category="전체"
+                    >
+                        <span class="category-icon">🖼️</span>
+                        <span>전체</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="추상화"
+                    >
+                        <span class="category-icon">🎨</span>
+                        <span>추상화</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="풍경화"
+                    >
+                        <span class="category-icon">🌿</span>
+                        <span>풍경화</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="인물화"
+                    >
+                        <span class="category-icon">👤</span>
+                        <span>인물화</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="동물"
+                    >
+                        <span class="category-icon">🐾</span>
+                        <span>동물</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="팝아트"
+                    >
+                        <span class="category-icon">✨</span>
+                        <span>팝아트</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="미니멀"
+                    >
+                        <span class="category-icon">◻️</span>
+                        <span>미니멀</span>
+                    </button>
+
+                </div>
+
+                <!-- 검색 결과와 정렬 -->
+                <div class="filter-info">
+
+                    <p class="result-count" id="resultCount">
+                        작품을 불러오는 중입니다.
+                    </p>
+
+                    <div class="sort-box">
+
+                        <label for="sortSelect">
+                            정렬
+                        </label>
+
+                        <select id="sortSelect">
+                            <option value="recommended">
+                                추천순
+                            </option>
+
+                            <option value="priceLow">
+                                낮은 가격순
+                            </option>
+
+                            <option value="priceHigh">
+                                높은 가격순
+                            </option>
+
+                            <option value="rating">
+                                평점 높은순
+                            </option>
+
+                            <option value="popular">
+                                인기순
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- 작품 목록 -->
+                <div class="artwork-list" id="artworkList"></div>
+
+                <!-- 결과 없음 -->
+                <div class="empty-message" id="emptyMessage">
+                    <strong>검색 결과가 없습니다.</strong>
+
+                    <p>
+                        다른 검색어나 카테고리를 선택해주세요.
+                    </p>
+
+                    <button type="button" id="resetBtn">
+                        전체 작품 보기
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 서비스 소개 -->
+        <section class="service-section" id="service">
+
+            <div class="section-inner">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">
+                            RENTAL PROCESS
+                        </p>
+
+                        <h2>
+                            그림 렌탈은 이렇게 진행됩니다
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="service-list">
+
+                    <article class="service-item">
+                        <span>01</span>
+
+                        <h3>작품 선택</h3>
+
+                        <p>
+                            원하는 카테고리와 가격대를 기준으로 작품을 선택합니다.
+                        </p>
+                    </article>
+
+                    <article class="service-item">
+                        <span>02</span>
+
+                        <h3>렌탈 신청</h3>
+
+                        <p>
+                            작품 정보와 렌탈 기간을 확인한 후 신청합니다.
+                        </p>
+                    </article>
+
+                    <article class="service-item">
+                        <span>03</span>
+
+                        <h3>배송 및 설치</h3>
+
+                        <p>
+                            전문 담당자가 안전하게 배송하고 원하는 공간에 설치합니다.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer" id="footer">
+
+        <div class="footer-inner">
+
+            <div>
+                <a href="./index.html" class="footer-logo">
+                    ArtiRent
+                </a>
+
+                <p>
+                    일상과 공간을 바꾸는 그림 렌탈 서비스
+                </p>
+            </div>
+
+            <div class="footer-info">
+                <p>고객센터 02-1234-5678</p>
+                <p>평일 09:00 ~ 18:00</p>
+                <p>© 2026 ArtiRent. All rights reserved.</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
